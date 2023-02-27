@@ -57,6 +57,7 @@ class ExtractIbmReleases {
                     release.source!!.link
                 )
             } else null,
+            null,
             null
         )
     }
@@ -100,7 +101,6 @@ class ExtractIbmReleases {
                 binary.scm_ref,
                 binary.scm_ref,
                 Distribution.semeru,
-                aqaLink,
                 "<Insert TCK Affidavit Here>"
             )
         }

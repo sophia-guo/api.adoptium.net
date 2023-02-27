@@ -20,7 +20,6 @@
           "scm_ref": "jdk8u302-b08",
           "openjdk_scm_ref": "jdk8u302-b08",
           "distribution": "temurin",
-          "aqavit_results_link": "https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u302-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u302b08.tap.zip",
           "tck_affidavit_link": "https://adoptium.net/temurin/tck-affidavit/"
         }
       ],

@@ -25,7 +25,7 @@ class ExtractAdoptiumReleases {
             VERSIONS,
             { version -> "https://api.adoptium.net/v3/assets/feature_releases/${version}/ga?page_size=50&vendor=eclipse" },
             { release -> toMarketplaceRelease(release, toMarketplaceBinaries(release)) },
-            "/tmp/adoptiumRepo",
+            "/Users/weguo/test/releaseJason",
             true
         )
     }
@@ -53,6 +53,7 @@ class ExtractAdoptiumReleases {
                     release.source!!.link
                 )
             } else null,
+            null,
             null
         )
     }
@@ -73,10 +74,6 @@ class ExtractAdoptiumReleases {
             }
 
             val upstreamScmRef = binary.scm_ref?.replace("_adopt", "")
-
-            val aqaLink = binary.`package`.link
-                .replace(".zip", ".tap.zip")
-                .replace(".tar.gz", ".tap.zip")
 
             Binary(
                 os,
@@ -106,7 +103,6 @@ class ExtractAdoptiumReleases {
                 binary.scm_ref,
                 upstreamScmRef,
                 Distribution.temurin,
-                aqaLink,
                 "https://adoptium.net/temurin/tck-affidavit/"
             )
         }

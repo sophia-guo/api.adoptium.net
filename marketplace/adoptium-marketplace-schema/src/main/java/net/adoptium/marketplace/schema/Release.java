@@ -16,6 +16,7 @@ public class Release {
     public static final String VERSION_DATA_NAME = "openjdk_version_data";
     public static final String VENDOR_PUBLIC_KEY_LINK_NAME = "vendor_public_key_link";
     public static final String LAST_UPDATED_TIMESTAMP_NAME = "last_updated_timestamp";
+    public static final String AQAVIT_TAPRESULT_LINK = "aqavit_tapresult_link";
 
     @Schema(
         example = "https://github.com/AdoptOpenJDK/openjdk8-openj9-releases/ga/tag/jdk8u162-b12_openj9-0.8.0",
@@ -46,6 +47,12 @@ public class Release {
     @Schema(required = true, name = VERSION_DATA_NAME)
     private final OpenjdkVersionData openjdkVersionData;
 
+    @Schema(
+        example = "https://github.com/AdoptOpenJDK/openjdk8-openj9-releases/ga/tag/jdk8u162-b12_openj9-0.8.0", //need to update
+        name = AQAVIT_TAPRESULT_LINK
+    )
+    private final String aqavitTapresultLink;
+
     private final SourcePackage source;
 
     @Schema(
@@ -65,6 +72,7 @@ public class Release {
         @JsonProperty(value = "vendor", required = true) Vendor vendor,
         @JsonProperty(value = VERSION_DATA_NAME, required = true) OpenjdkVersionData openjdkVersionData,
         @JsonProperty("source") SourcePackage source,
+        @JsonProperty(AQAVIT_TAPRESULT_LINK) String aqavitTapresultLink,
         @JsonProperty(VENDOR_PUBLIC_KEY_LINK_NAME) String vendorPublicKeyLink
     ) {
         this.releaseLink = releaseLink;
@@ -74,6 +82,7 @@ public class Release {
         this.vendor = vendor;
         this.openjdkVersionData = openjdkVersionData;
         this.source = source;
+        this.aqavitTapresultLink = aqavitTapresultLink;
         this.vendorPublicKeyLink = vendorPublicKeyLink;
     }
 
@@ -89,6 +98,7 @@ public class Release {
             release.vendor,
             release.openjdkVersionData,
             release.source,
+            release.aqavitTapresultLink,
             release.vendorPublicKeyLink
         );
     }
@@ -125,6 +135,11 @@ public class Release {
     public SourcePackage getSource() {
         return source;
     }
+    
+    @JsonProperty(AQAVIT_TAPRESULT_LINK)
+    public String getAQATapresultLink() {
+        return aqavitTapresultLink;
+    }
 
     @JsonProperty(VENDOR_PUBLIC_KEY_LINK_NAME)
     public String getVendorPublicKeyLink() {
@@ -139,6 +154,7 @@ public class Release {
             ", lastUpdatedTimestamp=" + lastUpdatedTimestamp +
             ", vendor=" + vendor +
             ", openjdkVersionData=" + openjdkVersionData +
+            ", aqavitTapresultLink='" + aqavitTapresultLink + '\'' +
             ", source=" + source +
             ", vendorPublicKeyLink='" + vendorPublicKeyLink + '\'' +
             '}';

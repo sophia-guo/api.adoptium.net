@@ -18,7 +18,6 @@ public class Binary {
     public static final String PACKAGE_NAME = "package";
     public static final String SCM_REF_NAME = "scm_ref";
     public static final String OPENJDK_SCM_REF_NAME = "openjdk_scm_ref";
-    public static final String AQAVIT_RESULTS_LINK_NAME = "aqavit_results_link";
     public static final String TCK_AFFIDAVIT_LINK_NAME = "tck_affidavit_link";
     public static final String OS_NAME = "os";
     public static final String ARCHITECTURE_NAME = "architecture";
@@ -86,12 +85,6 @@ public class Binary {
     @Schema(implementation = Distribution.class, required = true)
     private final Distribution distribution;
 
-    @Schema(required = true,
-        name = AQAVIT_RESULTS_LINK_NAME,
-        description = "Link to the aquavit results details for this binary",
-        example = "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17%2B35/OpenJDK17-jdk_x64_linux_hotspot_17_35.tar.gz.aqavit.zip")
-    private final String aqavitResultsLink;
-
     @Schema(required = false,
         name = TCK_AFFIDAVIT_LINK_NAME,
         example = "https://adoptium.net/tck_affidavit.html",
@@ -111,7 +104,6 @@ public class Binary {
         @JsonProperty(SCM_REF_NAME) String scmRef,
         @JsonProperty(value = OPENJDK_SCM_REF_NAME, required = true) String openjdkScmRef,
         @JsonProperty(value = DISTRIBUTION_NAME, required = true) Distribution distribution,
-        @JsonProperty(value = AQAVIT_RESULTS_LINK_NAME, required = true) String aqavitResultsLink,
         @JsonProperty(TCK_AFFIDAVIT_LINK_NAME) String tckAffidavitLink
     ) {
         this.os = os;
@@ -125,7 +117,6 @@ public class Binary {
         this.scmRef = scmRef;
         this.openjdkScmRef = openjdkScmRef;
         this.distribution = distribution;
-        this.aqavitResultsLink = aqavitResultsLink;
         this.tckAffidavitLink = tckAffidavitLink;
     }
 
@@ -178,11 +169,6 @@ public class Binary {
     @JsonProperty(DISTRIBUTION_NAME)
     public Distribution getDistribution() {
         return distribution;
-    }
-
-    @JsonProperty(AQAVIT_RESULTS_LINK_NAME)
-    public String getAqavitResultsLink() {
-        return aqavitResultsLink;
     }
 
     @JsonProperty(TCK_AFFIDAVIT_LINK_NAME)

@@ -52,7 +52,6 @@ object ModelComparators {
         .thenBy { it?.jvmImpl }
         .thenBy { it?.scmRef }
         .thenBy { it?.timestamp }
-        .thenBy { it?.aqavitResultsLink }
         .thenBy { it?.openjdkScmRef }
         .thenBy { it?.tckAffidavitLink }
         .then { a, b -> ASSET.compare(a?.`package`, b?.`package`) }

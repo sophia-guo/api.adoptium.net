@@ -131,6 +131,7 @@ class GenerateAdoptiumRepo {
                     release.source!!.link
                 )
             } else null,
+            null,
             null
         )
     }
@@ -172,7 +173,6 @@ class GenerateAdoptiumRepo {
                 binary.scm_ref,
                 "unknown",
                 Distribution.temurin,
-                "https://adoptium.net/aqavit/${binary.`package`.name}/aqavit_affidavit.html",
                 "https://adoptium.net/tck_affidavit.html"
             )
         }
