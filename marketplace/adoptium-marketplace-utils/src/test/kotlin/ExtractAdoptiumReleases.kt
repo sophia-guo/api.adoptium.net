@@ -6,6 +6,7 @@ import net.adoptium.marketplace.client.MarketplaceMapper
 import net.adoptium.marketplace.schema.*
 import org.eclipse.jetty.client.HttpClient
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.Disabled
 import java.io.File
 import java.io.FileWriter
 import java.nio.file.Path
@@ -25,7 +26,7 @@ class ExtractAdoptiumReleases {
             VERSIONS,
             { version -> "https://api.adoptium.net/v3/assets/feature_releases/${version}/ga?page_size=50&vendor=eclipse" },
             { release -> toMarketplaceRelease(release, toMarketplaceBinaries(release)) },
-            "/Users/weguo/test/releaseJason",
+            "/tmp/adoptiumRepo",
             true
         )
     }
@@ -53,7 +54,9 @@ class ExtractAdoptiumReleases {
                     release.source!!.link
                 )
             } else null,
-            null,
+            if (!release.aqavit_tapresult_link) {
+                release.aqavit_tapresult_link
+            } 
             null
         )
     }

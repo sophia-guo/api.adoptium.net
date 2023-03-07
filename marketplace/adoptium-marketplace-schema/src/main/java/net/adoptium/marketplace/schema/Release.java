@@ -48,7 +48,7 @@ public class Release {
     private final OpenjdkVersionData openjdkVersionData;
 
     @Schema(
-        example = "https://github.com/AdoptOpenJDK/openjdk8-openj9-releases/ga/tag/jdk8u162-b12_openj9-0.8.0", //need to update
+        example = "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.6%2B10/AQAvitTapFiles.tar.gz",
         name = AQAVIT_TAPRESULT_LINK
     )
     private final String aqavitTapresultLink;

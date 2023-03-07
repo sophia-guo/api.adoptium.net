@@ -36,6 +36,8 @@ class Release {
 
     val source: SourcePackage?
 
+    val aqavit_tapresult_link: String
+
     val release_notes: ReleaseNotesPackage?
 
     @JsonCreator
@@ -51,6 +53,7 @@ class Release {
         @JsonProperty("vendor") vendor: Vendor,
         @JsonProperty("version_data") version_data: VersionData,
         @JsonProperty("source") source: SourcePackage? = null,
+        @JsonProperty("aqavit_tapresult_link") aqavit_tapresult_link:? = "",
         @JsonProperty("release_notes") release_notes: ReleaseNotesPackage? = null
     ) {
         this.id = id
@@ -64,6 +67,7 @@ class Release {
         this.vendor = vendor
         this.version_data = version_data
         this.source = source
+        this.aqavit_tapresult_link = aqavit_tapresult_link
         this.release_notes = release_notes
     }
 
@@ -79,6 +83,7 @@ class Release {
         this.vendor = release.vendor
         this.version_data = release.version_data
         this.source = release.source
+        this.aqavit_tapresult_link = release.aqavit_tapresult_link
         this.release_notes = release.release_notes
     }
 
@@ -102,6 +107,7 @@ class Release {
         if (vendor != other.vendor) return false
         if (version_data != other.version_data) return false
         if (source != other.source) return false
+        if (aqavit_tapresult_link != other.aqavit_tapresult_link) return false
         if (release_notes != other.release_notes) return false
 
         return true
@@ -118,11 +124,12 @@ class Release {
         result = 31 * result + vendor.hashCode()
         result = 31 * result + version_data.hashCode()
         result = 31 * result + (source?.hashCode() ?: 0)
+        result = 31 * result + aqavit_tapresult_link.hashCode()
         result = 31 * result + (release_notes?.hashCode() ?: 0)
         return result
     }
 
     override fun toString(): String {
-        return "Release(id='$id', release_link='$release_link', release_name='$release_name', timestamp=$timestamp, updated_at=$updated_at, download_count=$download_count, release_type=$release_type, vendor=$vendor, version_data=$version_data, source=$source)"
+        return "Release(id='$id', release_link='$release_link', release_name='$release_name', timestamp=$timestamp, updated_at=$updated_at, download_count=$download_count, release_type=$release_type, vendor=$vendor, version_data=$version_data, source=$source,  aqavit_tapresult_link=$aqavit_tapresult_link)"
     }
 }
